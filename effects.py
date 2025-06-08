@@ -42,7 +42,7 @@ class EffectImplementation:
         for name, func in self.functions.items():
 
             def wrapper(*args, **kwargs):
-                new_globals = func.__globals__
+                new_globals = {**func.__globals__}
                 for _name in self.functions.keys():
                     del func.__globals__[_name]
                 for _name, some_val in previous_globals.items():
